@@ -1,0 +1,159 @@
+databaseChangeLog:
+  - logicalFilePath: db/changelog/db.changelog-lesson1.yaml
+  - changeSet:
+      id: 1
+      author: nexign
+      changes:
+        - createTable:
+            tableName: products
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(50)
+                  constraints:
+                    unique: true
+                    nullable: false
+              - column:
+                  name: price
+                  type: double(15,2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: image
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: 2
+      author: nexign
+      comment: "create products"
+      changes:
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: name
+                  value: "Эспрессо"
+              - column:
+                  name: price
+                  value: "120.00"
+              - column:
+                  name: image
+                  value: "https://lafoy.ru/photo_l/foto-2426-1.jpg"
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: name
+                  value: "Капучино"
+              - column:
+                  name: price
+                  value: "240.00"
+              - column:
+                  name: image
+                  value: "https://lafoy.ru/photo_l/foto-2426-11.jpg"
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: name
+                  value: "Латте"
+              - column:
+                  name: price
+                  value: "315.50"
+              - column:
+                  name: image
+                  value: "https://lafoy.ru/photo_l/foto-2426-12.jpg"
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: name
+                  value: "Американо"
+              - column:
+                  name: price
+                  value: "90.00"
+              - column:
+                  name: image
+                  value: "https://lafoy.ru/photo_l/foto-2426-2.jpg"
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: name
+                  value: "Фраппучино"
+              - column:
+                  name: price
+                  value: "350.00"
+              - column:
+                  name: image
+                  value: "https://lafoy.ru/photo_l/foto-2426-26.jpg"
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: name
+                  value: "Флэт Уайт"
+              - column:
+                  name: price
+                  value: "400.00"
+              - column:
+                  name: image
+                  value: "https://lafoy.ru/photo_l/foto-2426-15.jpg"
+
+  - changeSet:
+      id: create-order-table
+      author: nexign
+      changes:
+        - createTable:
+            tableName: orders
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: created
+                  type: datetime
+                  constraints:
+                    nullable: false
+              - column:
+                  name: total_price
+                  type: double
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: create-order-item-table
+      author: nexign
+      changes:
+        - createTable:
+            tableName: order_items
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: order_id
+                  type: bigint
+              - column:
+                  name: product_id
+                  type: bigint
+              - column:
+                  name: quantity
+                  type: integer
+                  constraints:
+                    nullable: false
