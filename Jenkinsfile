@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    def a = "Hello world"
+    def a = "Hello Jenkins"
     stages {
         stage('Build') {
             steps {
