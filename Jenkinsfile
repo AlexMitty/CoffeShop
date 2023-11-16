@@ -1,6 +1,5 @@
 pipeline {
     agent any
-<<<<<<< HEAD
     def a = "Hello world"
     stages {
         stage('Build') {
@@ -10,14 +9,4 @@ pipeline {
         }
     }
 }
-=======
 
-    stages {
-        stage('Build') {
-            steps {
-                echo "Hello world"
-            }
-        }
-    }
-}
->>>>>>> origin/master
